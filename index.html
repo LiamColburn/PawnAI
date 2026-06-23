@@ -3,362 +3,332 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pawn — AI Agents for Small Business</title>
+<title>Pawn — Personalized AI Agents. Built for You.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --navy:   #0A0D14;
-    --navy2:  #111520;
-    --navy3:  #181D2B;
-    --border: rgba(255,255,255,0.08);
-    --accent: #00E5A0;
-    --accent2: #00B87A;
-    --text:   #F0EEE8;
-    --muted:  #8A8FA3;
-    --dim:    #3A3F52;
-    --card:   #13172090;
-    --r: 10px;
+    --cream:   #FDFAF5;
+    --card:    #F5EEE2;
+    --card2:   #F0E6D5;
+    --line:    #E2D4BC;
+    --espresso:#3A2515;
+    --brown:   #6B4A30;
+    --brown2:  #83573D;
+    --gold:    #B68A52;
+    --muted:   #7A6A57;
+    --r: 4px;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--navy);
-    color: var(--text);
+    background: var(--cream);
+    color: var(--espresso);
     font-family: 'Inter', sans-serif;
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
 
   h1,h2,h3,h4 {
-    font-family: 'Space Grotesk', sans-serif;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    font-family: 'Cormorant Garamond', serif;
+    line-height: 1.1;
+    font-weight: 600;
   }
+
+  .diamond { display: inline-block; width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
 
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 5%;
-    background: rgba(10,13,20,0.85);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
+    padding: 20px 5%;
+    background: rgba(253,250,245,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
   }
   .nav-logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 22px; font-weight: 700;
-    color: var(--text); text-decoration: none;
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; color: var(--espresso);
   }
-  .nav-logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-logo img { height: 34px; width: auto; }
+  .nav-logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600;
+    letter-spacing: 0.12em;
+  }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
   .nav-links a {
-    color: var(--muted); text-decoration: none; font-size: 14px;
+    color: var(--muted); text-decoration: none; font-size: 13px;
+    letter-spacing: 0.04em;
     transition: color .2s;
   }
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover { color: var(--espresso); }
   .nav-cta {
-    background: var(--accent); color: var(--navy);
-    padding: 9px 22px; border-radius: 6px;
-    font-size: 14px; font-weight: 600; text-decoration: none;
+    background: var(--espresso); color: var(--cream);
+    padding: 11px 26px; border-radius: var(--r);
+    font-size: 13px; font-weight: 500; letter-spacing: 0.03em; text-decoration: none;
     transition: background .2s, transform .15s;
   }
-  .nav-cta:hover { background: var(--accent2); transform: translateY(-1px); }
+  .nav-cta:hover { background: var(--brown2); transform: translateY(-1px); }
 
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
-    text-align: center; padding: 120px 5% 80px;
+    text-align: center; padding: 140px 5% 90px;
     position: relative; overflow: hidden;
   }
-  .hero-grid {
-    position: absolute; inset: 0; pointer-events: none;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 60px 60px;
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 80%);
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 80%);
-  }
-  .hero-glow {
-    position: absolute; width: 600px; height: 600px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,229,160,0.07) 0%, transparent 70%);
-    top: 50%; left: 50%; transform: translate(-50%,-50%);
-    pointer-events: none;
+  .hero-watermark {
+    position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+    width: 520px; opacity: 0.05; pointer-events: none;
   }
   .hero-eyebrow {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(0,229,160,0.1); border: 1px solid rgba(0,229,160,0.25);
-    color: var(--accent); border-radius: 100px;
-    padding: 6px 16px; font-size: 12px; font-weight: 500;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    margin-bottom: 28px; position: relative;
-  }
-  .hero-eyebrow::before {
-    content: ''; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--accent); animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%,100%{opacity:1;transform:scale(1)}
-    50%{opacity:.5;transform:scale(1.3)}
+    display: flex; align-items: center; gap: 12px;
+    color: var(--gold); margin-bottom: 30px;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
   }
   .hero h1 {
-    font-size: clamp(44px, 7vw, 88px);
-    font-weight: 700; max-width: 820px;
-    position: relative;
+    font-size: clamp(46px, 7vw, 86px);
+    font-weight: 600; max-width: 880px;
+    position: relative; letter-spacing: -0.01em;
   }
-  .hero h1 em { color: var(--accent); font-style: normal; }
+  .hero h1 em { color: var(--brown2); font-style: italic; }
   .hero-sub {
-    color: var(--muted); font-size: clamp(16px,2vw,20px);
-    max-width: 520px; margin: 24px auto 48px; line-height: 1.7;
-    position: relative;
+    color: var(--muted); font-size: clamp(16px,2vw,19px);
+    max-width: 520px; margin: 26px auto 46px; line-height: 1.75;
+    position: relative; font-weight: 300;
   }
-  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; position: relative; }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; position: relative; }
   .btn-primary {
-    background: var(--accent); color: var(--navy);
-    padding: 14px 32px; border-radius: var(--r);
-    font-weight: 600; font-size: 15px; text-decoration: none;
+    background: var(--espresso); color: var(--cream);
+    padding: 15px 34px; border-radius: var(--r);
+    font-weight: 500; font-size: 14px; letter-spacing: 0.03em; text-decoration: none;
     transition: background .2s, transform .15s, box-shadow .2s;
-    box-shadow: 0 0 0 0 rgba(0,229,160,0);
   }
   .btn-primary:hover {
-    background: var(--accent2); transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(0,229,160,0.25);
+    background: var(--brown2); transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(58,37,21,0.18);
   }
   .btn-ghost {
-    background: transparent; color: var(--text);
-    padding: 14px 32px; border-radius: var(--r);
-    border: 1px solid var(--dim);
-    font-weight: 500; font-size: 15px; text-decoration: none;
+    background: transparent; color: var(--espresso);
+    padding: 15px 34px; border-radius: var(--r);
+    border: 1px solid var(--line);
+    font-weight: 500; font-size: 14px; letter-spacing: 0.03em; text-decoration: none;
     transition: border-color .2s, transform .15s;
   }
-  .btn-ghost:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .btn-ghost:hover { border-color: var(--gold); transform: translateY(-2px); }
 
   .hero-stats {
-    display: flex; gap: 48px; margin-top: 72px; position: relative;
-    padding-top: 48px; border-top: 1px solid var(--border); flex-wrap: wrap; justify-content: center;
+    display: flex; gap: 56px; margin-top: 80px; position: relative;
+    padding-top: 40px; border-top: 1px solid var(--line); flex-wrap: wrap; justify-content: center;
   }
   .stat-num {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 42px; font-weight: 700; color: var(--accent);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 600; color: var(--brown2);
     line-height: 1;
   }
-  .stat-label { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .stat-label { color: var(--muted); font-size: 12.5px; margin-top: 6px; letter-spacing: 0.02em; }
 
   /* ── SECTION SHARED ── */
-  section { padding: 100px 5%; }
+  section { padding: 110px 5%; }
   .section-label {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+    display: flex; align-items: center; gap: 12px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
   }
   .section-title {
-    font-size: clamp(28px, 4vw, 48px); font-weight: 700; max-width: 640px;
+    font-size: clamp(30px, 4vw, 46px); font-weight: 600; max-width: 680px;
   }
-  .section-sub { color: var(--muted); margin-top: 14px; max-width: 540px; line-height: 1.7; }
-  .section-header { margin-bottom: 60px; }
+  .section-title em { color: var(--brown2); font-style: italic; }
+  .section-sub { color: var(--muted); margin-top: 16px; max-width: 540px; line-height: 1.75; font-weight: 300; }
+  .section-header { margin-bottom: 64px; }
 
   /* ── HOW IT WORKS ── */
-  .how { background: var(--navy2); }
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; }
+  .how { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; }
   .step {
-    padding: 40px 32px; border-right: 1px solid var(--border);
+    padding: 0 36px 0 0; border-right: 1px solid var(--line);
     position: relative;
   }
-  .step:last-child { border-right: none; }
-  .step-num {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 48px; font-weight: 700; color: var(--dim); line-height: 1;
-    margin-bottom: 16px;
-  }
-  .step h3 { font-size: 17px; margin-bottom: 10px; }
-  .step p { color: var(--muted); font-size: 14px; line-height: 1.7; }
-  .step-arrow {
-    position: absolute; right: -12px; top: 50%;
-    transform: translateY(-50%);
-    color: var(--accent); font-size: 20px; z-index: 2;
-    background: var(--navy2); padding: 4px;
-  }
+  .step:last-child { border-right: none; padding-right: 0; }
+  .step:not(:first-child) { padding-left: 36px; }
+  .step-mark { color: var(--gold); font-size: 13px; letter-spacing: 0.1em; margin-bottom: 18px; font-weight: 500; }
+  .step h3 { font-size: 21px; margin-bottom: 12px; font-weight: 600; }
+  .step p { color: var(--muted); font-size: 14px; line-height: 1.75; font-weight: 300; }
 
   /* ── AGENTS ── */
-  .agents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; background: var(--border); }
+  .agents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
   .agent-card {
-    background: var(--navy); padding: 48px 40px;
+    background: var(--cream); padding: 50px 42px;
     position: relative; overflow: hidden;
     transition: background .25s;
   }
-  .agent-card:hover { background: var(--navy3); }
-  .agent-icon {
-    width: 56px; height: 56px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 28px; font-size: 26px;
+  .agent-card:hover { background: var(--card); }
+  .agent-mark {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 15px; color: var(--gold); margin-bottom: 26px;
+    letter-spacing: 0.02em;
   }
-  .icon-voice  { background: rgba(0,229,160,0.12); }
-  .icon-chat   { background: rgba(88,155,255,0.12); }
-  .icon-email  { background: rgba(255,179,71,0.12); }
-  .agent-card h3 { font-size: 22px; margin-bottom: 12px; }
-  .agent-card .tagline { color: var(--accent); font-size: 13px; font-weight: 500; margin-bottom: 16px; }
-  .agent-card p { color: var(--muted); font-size: 14px; line-height: 1.75; margin-bottom: 24px; }
-  .agent-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .agent-card h3 { font-size: 25px; margin-bottom: 14px; font-weight: 600; }
+  .agent-card p { color: var(--muted); font-size: 14.5px; line-height: 1.8; margin-bottom: 26px; font-weight: 300; }
+  .agent-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
   .agent-features li {
-    color: var(--muted); font-size: 13px;
-    display: flex; align-items: flex-start; gap: 8px;
+    color: var(--brown); font-size: 13.5px;
+    display: flex; align-items: flex-start; gap: 10px;
   }
-  .agent-features li::before { content: '✓'; color: var(--accent); font-weight: 600; flex-shrink: 0; }
+  .agent-features li::before { content: '—'; color: var(--gold); font-weight: 500; flex-shrink: 0; }
   .savings-chip {
-    display: inline-block; margin-top: 28px;
-    background: rgba(0,229,160,0.1); border: 1px solid rgba(0,229,160,0.2);
-    color: var(--accent); border-radius: 6px; padding: 8px 14px; font-size: 13px; font-weight: 500;
+    display: inline-block; margin-top: 30px;
+    border-top: 1px solid var(--line);
+    color: var(--brown2); padding-top: 18px; font-size: 13px; font-weight: 500; font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
   }
 
   /* ── SAVINGS CALCULATOR ── */
-  .savings { background: var(--navy2); }
+  .savings { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .savings-inner { max-width: 680px; }
   .calc-block {
-    background: var(--navy3); border: 1px solid var(--border);
-    border-radius: 14px; padding: 40px; margin-top: 40px;
+    background: var(--cream); border: 1px solid var(--line);
+    border-radius: var(--r); padding: 44px; margin-top: 44px;
   }
-  .calc-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 28px; }
-  .calc-label { font-size: 14px; color: var(--muted); }
+  .calc-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 30px; }
+  .calc-label { font-size: 14px; color: var(--muted); font-weight: 300; }
   .calc-row input[type=range] {
-    width: 220px; accent-color: var(--accent); cursor: pointer;
+    width: 220px; accent-color: var(--brown2); cursor: pointer;
   }
-  .calc-val { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; min-width: 70px; text-align: right; }
-  .calc-divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+  .calc-val { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; min-width: 70px; text-align: right; }
+  .calc-divider { border: none; border-top: 1px solid var(--line); margin: 30px 0; }
   .calc-result { display: flex; justify-content: space-between; align-items: center; }
-  .result-label { color: var(--muted); font-size: 14px; }
+  .result-label { color: var(--muted); font-size: 13.5px; font-weight: 300; }
   .result-num {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 40px; font-weight: 700; color: var(--accent);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px; font-weight: 700; color: var(--brown2);
   }
   .result-sub { color: var(--muted); font-size: 12px; margin-top: 4px; }
 
   /* ── BUNDLES ── */
-  .bundles { background: var(--navy); }
-  .bundles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 48px; }
+  .bundles { background: var(--cream); }
+  .bundles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 50px; }
   .bundle-card {
-    background: var(--navy2); border: 1px solid var(--border);
-    border-radius: 14px; padding: 36px 30px;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--r); padding: 38px 32px;
     position: relative; cursor: pointer;
     transition: border-color .2s, transform .2s, background .2s;
   }
-  .bundle-card:hover { border-color: rgba(0,229,160,0.3); transform: translateY(-3px); }
+  .bundle-card:hover { border-color: var(--gold); transform: translateY(-3px); }
   .bundle-card.featured {
-    border-color: var(--accent);
-    background: rgba(0,229,160,0.04);
+    border-color: var(--brown2);
+    background: var(--card2);
   }
   .bundle-badge {
-    position: absolute; top: -12px; left: 30px;
-    background: var(--accent); color: var(--navy);
-    font-size: 11px; font-weight: 700; padding: 3px 12px;
-    border-radius: 100px; letter-spacing: 0.06em;
+    position: absolute; top: -13px; left: 32px;
+    background: var(--espresso); color: var(--cream);
+    font-size: 10.5px; font-weight: 600; padding: 4px 14px;
+    letter-spacing: 0.1em;
   }
-  .bundle-name { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; margin-bottom: 6px; }
-  .bundle-agents { color: var(--muted); font-size: 13px; margin-bottom: 24px; line-height: 1.6; }
+  .bundle-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+  .bundle-agents { color: var(--muted); font-size: 13px; margin-bottom: 26px; line-height: 1.6; font-weight: 300; }
   .bundle-price {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 38px; font-weight: 700; line-height: 1;
-    margin-bottom: 4px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px; font-weight: 700; line-height: 1;
+    margin-bottom: 6px; color: var(--brown2);
   }
-  .bundle-price span { font-size: 16px; font-weight: 400; color: var(--muted); }
-  .bundle-note { color: var(--muted); font-size: 12px; margin-bottom: 24px; }
-  .bundle-list { list-style: none; display: flex; flex-direction: column; gap: 9px; margin-bottom: 32px; }
-  .bundle-list li { font-size: 13px; color: var(--muted); display: flex; gap: 8px; align-items: flex-start; }
-  .bundle-list li::before { content: '✓'; color: var(--accent); font-weight: 600; flex-shrink: 0; }
+  .bundle-price span { font-size: 15px; font-weight: 400; color: var(--muted); font-family: 'Inter', sans-serif; }
+  .bundle-note { color: var(--muted); font-size: 12px; margin-bottom: 26px; }
+  .bundle-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 34px; }
+  .bundle-list li { font-size: 13px; color: var(--brown); display: flex; gap: 9px; align-items: flex-start; }
+  .bundle-list li::before { content: '—'; color: var(--gold); font-weight: 500; flex-shrink: 0; }
   .bundle-btn {
     display: block; text-align: center; text-decoration: none;
-    padding: 11px 20px; border-radius: 8px; font-size: 14px; font-weight: 500;
-    border: 1px solid var(--dim); color: var(--text);
+    padding: 12px 20px; border-radius: var(--r); font-size: 13.5px; font-weight: 500;
+    border: 1px solid var(--line); color: var(--espresso);
     transition: border-color .2s, background .2s;
   }
-  .bundle-btn:hover { border-color: var(--accent); }
+  .bundle-btn:hover { border-color: var(--gold); }
   .bundle-card.featured .bundle-btn {
-    background: var(--accent); color: var(--navy); border-color: var(--accent);
+    background: var(--espresso); color: var(--cream); border-color: var(--espresso);
   }
-  .bundle-card.featured .bundle-btn:hover { background: var(--accent2); }
+  .bundle-card.featured .bundle-btn:hover { background: var(--brown2); }
 
   /* ── WHY PAWN ── */
-  .why { background: var(--navy2); }
-  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px; margin-top: 60px; }
-  .why-item { padding: 32px; background: var(--navy); border-radius: 12px; border: 1px solid var(--border); }
-  .why-icon { font-size: 28px; margin-bottom: 16px; }
-  .why-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
-  .why-item p { color: var(--muted); font-size: 14px; line-height: 1.7; }
+  .why { background: var(--card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; margin-top: 64px; background: var(--line); border: 1px solid var(--line); }
+  .why-item { padding: 38px; background: var(--cream); }
+  .why-mark { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--gold); font-size: 15px; margin-bottom: 18px; }
+  .why-item h3 { font-size: 19px; font-weight: 600; margin-bottom: 12px; }
+  .why-item p { color: var(--muted); font-size: 14px; line-height: 1.75; font-weight: 300; }
 
   /* ── CONTACT ── */
-  .contact { background: var(--navy); }
+  .contact { background: var(--cream); }
   .contact-inner {
     max-width: 600px; margin: 0 auto; text-align: center;
   }
-  .contact-inner .section-title { margin: 0 auto 14px; }
-  .contact-inner .section-sub { margin: 0 auto 48px; }
+  .contact-inner .section-label { justify-content: center; }
+  .contact-inner .section-title { margin: 0 auto 16px; }
+  .contact-inner .section-sub { margin: 0 auto 50px; }
   .contact-form { text-align: left; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
   .form-group { display: flex; flex-direction: column; gap: 8px; }
-  .form-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+  .form-label { font-size: 12.5px; color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
   .form-input, .form-select, .form-textarea {
-    background: var(--navy2); border: 1px solid var(--border);
-    color: var(--text); border-radius: 8px; padding: 12px 16px; font-size: 14px;
+    background: var(--card); border: 1px solid var(--line);
+    color: var(--espresso); border-radius: var(--r); padding: 13px 16px; font-size: 14px;
     font-family: 'Inter', sans-serif;
     transition: border-color .2s;
     width: 100%;
     appearance: none;
   }
   .form-input:focus, .form-select:focus, .form-textarea:focus {
-    outline: none; border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(0,229,160,0.08);
+    outline: none; border-color: var(--brown2);
+    box-shadow: 0 0 0 3px rgba(131,87,61,0.08);
   }
-  .form-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A8FA3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
-  .form-select option { background: var(--navy2); }
+  .form-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A6A57' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+  .form-select option { background: var(--card); }
   .form-textarea { resize: vertical; min-height: 110px; }
   .form-full { margin-bottom: 16px; }
   .form-submit {
-    width: 100%; padding: 15px; background: var(--accent); color: var(--navy);
-    border: none; border-radius: 8px; font-size: 15px; font-weight: 600;
-    cursor: pointer; font-family: 'Space Grotesk', sans-serif;
+    width: 100%; padding: 16px; background: var(--espresso); color: var(--cream);
+    border: none; border-radius: var(--r); font-size: 14.5px; font-weight: 500; letter-spacing: 0.03em;
+    cursor: pointer; font-family: 'Inter', sans-serif;
     transition: background .2s, transform .15s, box-shadow .2s;
     margin-top: 8px;
   }
   .form-submit:hover {
-    background: var(--accent2); transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(0,229,160,0.2);
+    background: var(--brown2); transform: translateY(-1px);
+    box-shadow: 0 10px 26px rgba(58,37,21,0.16);
   }
-  .form-note { text-align: center; color: var(--muted); font-size: 12px; margin-top: 16px; }
+  .form-note { text-align: center; color: var(--muted); font-size: 12px; margin-top: 18px; }
   .success-msg {
-    display: none; text-align: center; padding: 40px;
-    background: rgba(0,229,160,0.08); border: 1px solid rgba(0,229,160,0.2);
-    border-radius: 12px; color: var(--text);
+    display: none; text-align: center; padding: 50px 40px;
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--r); color: var(--espresso);
   }
-  .success-msg h3 { font-size: 22px; margin-bottom: 10px; color: var(--accent); }
-  .success-msg p { color: var(--muted); font-size: 14px; }
+  .success-msg h3 { font-size: 26px; margin-bottom: 12px; color: var(--brown2); font-style: italic; }
+  .success-msg p { color: var(--muted); font-size: 14px; font-weight: 300; }
 
   /* ── FOOTER ── */
   footer {
-    background: var(--navy2); border-top: 1px solid var(--border);
-    padding: 40px 5%; display: flex; justify-content: space-between; align-items: center;
+    background: var(--card); border-top: 1px solid var(--line);
+    padding: 44px 5%; display: flex; justify-content: space-between; align-items: center;
     flex-wrap: wrap; gap: 16px;
   }
-  .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; }
-  .footer-logo span { color: var(--accent); }
-  footer p { color: var(--muted); font-size: 13px; }
+  .footer-logo { display: flex; align-items: center; gap: 10px; }
+  .footer-logo img { height: 24px; }
+  .footer-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 16px; font-weight: 600; letter-spacing: 0.1em; }
+  footer p { color: var(--muted); font-size: 13px; font-weight: 300; }
 
-  /* ── CHESS PIECE SVG HERO ── */
-  .hero-piece {
-    position: absolute; right: 6%; bottom: 10%;
-    opacity: 0.06; pointer-events: none;
-  }
   @media (max-width: 768px) {
-    .hero-piece { display: none; }
+    .hero-watermark { display: none; }
     .form-row { grid-template-columns: 1fr; }
     nav .nav-links { display: none; }
-    .step { border-right: none; border-bottom: 1px solid var(--border); }
-    .step-arrow { display: none; }
+    .step { border-right: none; border-bottom: 1px solid var(--line); padding: 0 0 32px 0 !important; margin-bottom: 32px; }
+    .steps { gap: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
@@ -369,33 +339,23 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">♟ Pawn<span>.</span></a>
+  <a href="#" class="nav-logo">
+    <img src="Pawn_Logo.png" alt="Pawn">
+    <span class="nav-logo-text">PAWN</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#agents">Agents</a></li>
     <li><a href="#savings">Savings</a></li>
     <li><a href="#bundles">Pricing</a></li>
     <li><a href="#contact">Get a quote</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Get a quote →</a>
+  <a href="#contact" class="nav-cta">Get a quote</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-grid"></div>
-  <div class="hero-glow"></div>
-  <svg class="hero-piece" width="340" height="520" viewBox="0 0 100 160" fill="white">
-    <ellipse cx="50" cy="148" rx="34" ry="10"/>
-    <rect x="28" y="136" width="44" height="14" rx="4"/>
-    <rect x="33" y="122" width="34" height="16" rx="3"/>
-    <ellipse cx="50" cy="114" rx="20" ry="12"/>
-    <rect x="38" y="80" width="24" height="36" rx="4"/>
-    <ellipse cx="50" cy="72" rx="16" ry="12"/>
-    <ellipse cx="50" cy="54" rx="12" ry="18"/>
-    <circle cx="50" cy="28" r="14"/>
-    <circle cx="50" cy="12" r="10"/>
-  </svg>
-
-  <div class="hero-eyebrow">AI agents for small business</div>
+  <img class="hero-watermark" src="Pawn_Logo.png" alt="">
+  <div class="hero-eyebrow"><span class="diamond"></span>Personalized AI agents. Built for you.</div>
   <h1>Your business,<br>playing at a <em>higher level.</em></h1>
   <p class="hero-sub">Pawn deploys AI agents that answer calls, chat with website visitors, and handle your email — 24/7, without the overhead.</p>
   <div class="hero-actions">
@@ -425,30 +385,27 @@
 <!-- HOW IT WORKS -->
 <section class="how" id="how">
   <div class="section-header">
-    <div class="section-label">How it works</div>
-    <h2 class="section-title">Up and running in 48 hours</h2>
+    <div class="section-label"><span class="diamond"></span>How it works</div>
+    <h2 class="section-title">Up and running in <em>48 hours</em></h2>
   </div>
   <div class="steps">
     <div class="step">
-      <div class="step-num">01</div>
+      <div class="step-mark">First move</div>
       <h3>Tell us about your business</h3>
       <p>Fill out a quick intake form. We learn your services, tone, FAQs, and booking process so the agents speak your language.</p>
-      <div class="step-arrow">→</div>
     </div>
     <div class="step">
-      <div class="step-num">02</div>
+      <div class="step-mark">Second move</div>
       <h3>We configure your agents</h3>
       <p>Our team sets up your voice, chat, and email agents, connects them to your calendar and CRM, and trains them on your content.</p>
-      <div class="step-arrow">→</div>
     </div>
     <div class="step">
-      <div class="step-num">03</div>
+      <div class="step-mark">Third move</div>
       <h3>Go live, stress-free</h3>
       <p>We flip the switch. Your agents handle the volume. You get weekly reports on calls handled, leads captured, and emails resolved.</p>
-      <div class="step-arrow">→</div>
     </div>
     <div class="step">
-      <div class="step-num">04</div>
+      <div class="step-mark">Ongoing</div>
       <h3>We tune as you grow</h3>
       <p>Ongoing support and optimization. As your business changes, your agents adapt — no extra charge for standard updates.</p>
     </div>
@@ -456,18 +413,17 @@
 </section>
 
 <!-- AGENTS -->
-<section id="agents" style="background: var(--navy); padding-left:0; padding-right:0; padding-top: 100px; padding-bottom: 0;">
-  <div style="padding: 0 5% 60px;">
-    <div class="section-label">The agents</div>
-    <h2 class="section-title">Three specialists. One seamless system.</h2>
+<section id="agents" style="background: var(--cream); padding-left:0; padding-right:0; padding-top: 110px; padding-bottom: 0;">
+  <div style="padding: 0 5% 64px;">
+    <div class="section-label"><span class="diamond"></span>The agents</div>
+    <h2 class="section-title">Three specialists. <em>One seamless system.</em></h2>
     <p class="section-sub">Each agent is purpose-built, then connected into a single chain so nothing falls through the cracks.</p>
   </div>
   <div class="agents-grid">
 
     <!-- Voice -->
     <div class="agent-card">
-      <div class="agent-icon icon-voice">🎙️</div>
-      <div class="tagline">Voice Agent · Phone calls</div>
+      <div class="agent-mark">Voice Agent · Phone calls</div>
       <h3>Never miss a call again</h3>
       <p>Your AI receptionist answers every inbound call instantly — in a natural, professional voice — even at 2am or on weekends. It handles the full conversation, not just a menu.</p>
       <ul class="agent-features">
@@ -483,8 +439,7 @@
 
     <!-- Chatbot -->
     <div class="agent-card">
-      <div class="agent-icon icon-chat">💬</div>
-      <div class="tagline">Website Agent · Live chat</div>
+      <div class="agent-mark">Website Agent · Live chat</div>
       <h3>Turn visitors into customers, automatically</h3>
       <p>A smart chat widget on your site engages visitors the moment they land — answering questions, capturing leads, and booking appointments without any human involvement.</p>
       <ul class="agent-features">
@@ -500,8 +455,7 @@
 
     <!-- Email -->
     <div class="agent-card">
-      <div class="agent-icon icon-email">✉️</div>
-      <div class="tagline">Email Agent · Inbox automation</div>
+      <div class="agent-mark">Email Agent · Inbox automation</div>
       <h3>Your inbox, handled</h3>
       <p>The email agent reads every incoming message, classifies it, drafts a reply in your voice, and sends it — or escalates to you when judgment is needed. Responses in under 2 minutes.</p>
       <ul class="agent-features">
@@ -521,8 +475,8 @@
 <!-- SAVINGS CALCULATOR -->
 <section class="savings" id="savings">
   <div class="savings-inner">
-    <div class="section-label">Savings calculator</div>
-    <h2 class="section-title">See what you'd save</h2>
+    <div class="section-label"><span class="diamond"></span>Savings calculator</div>
+    <h2 class="section-title">See what <em>you'd save</em></h2>
     <p class="section-sub">Drag the sliders to match your business. We'll show you the math.</p>
     <div class="calc-block">
       <div class="calc-row">
@@ -549,7 +503,7 @@
         </div>
         <div style="text-align:right">
           <div style="font-size:13px; color:var(--muted); margin-bottom:6px;">Pawn handles</div>
-          <div id="hours-saved" style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;">736 hrs/yr</div>
+          <div id="hours-saved" style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--brown2);">736 hrs/yr</div>
           <div style="font-size:12px;color:var(--muted);">freed up for your team</div>
         </div>
       </div>
@@ -559,8 +513,8 @@
 
 <!-- BUNDLES -->
 <section class="bundles" id="bundles">
-  <div class="section-label">Pricing</div>
-  <h2 class="section-title">Pick your play</h2>
+  <div class="section-label"><span class="diamond"></span>Pricing</div>
+  <h2 class="section-title">Pick your <em>play</em></h2>
   <p class="section-sub" style="margin-bottom:0;">Every plan includes setup, training on your content, and ongoing support. No contracts — cancel anytime.</p>
   <div class="bundles-grid">
 
@@ -657,41 +611,41 @@
     </div>
 
   </div>
-  <p style="color:var(--muted);font-size:13px;margin-top:24px;text-align:center;">Need a custom combination? <a href="#contact" style="color:var(--accent);text-decoration:none;">Let's talk →</a></p>
+  <p style="color:var(--muted);font-size:13px;margin-top:26px;text-align:center;font-weight:300;">Need a custom combination? <a href="#contact" style="color:var(--brown2);text-decoration:none;font-weight:500;">Let's talk →</a></p>
 </section>
 
 <!-- WHY PAWN -->
 <section class="why">
-  <div class="section-label">Why Pawn</div>
-  <h2 class="section-title">Built for businesses that actually run on calls and email</h2>
+  <div class="section-label"><span class="diamond"></span>Why Pawn</div>
+  <h2 class="section-title">Built for businesses that <em>actually run</em> on calls and email</h2>
   <div class="why-grid">
     <div class="why-item">
-      <div class="why-icon">⚡</div>
+      <div class="why-mark">Speed</div>
       <h3>Live in 48 hours</h3>
       <p>No months-long enterprise implementations. We configure, train, and launch your agents in two business days.</p>
     </div>
     <div class="why-item">
-      <div class="why-icon">🧠</div>
+      <div class="why-mark">Fit</div>
       <h3>Trained on your business</h3>
       <p>Every agent learns your services, pricing, tone, and FAQs — so it sounds like you, not like a robot reading a script.</p>
     </div>
     <div class="why-item">
-      <div class="why-icon">🔗</div>
+      <div class="why-mark">Integration</div>
       <h3>Connects to what you already use</h3>
       <p>Google Calendar, HubSpot, Salesforce, Gmail, Outlook, and 1,000+ other tools — plug in without changing your workflow.</p>
     </div>
     <div class="why-item">
-      <div class="why-icon">👁</div>
+      <div class="why-mark">Oversight</div>
       <h3>You stay in control</h3>
       <p>Review everything your agents say. Set rules for what they can and can't handle. Escalation is instant and transparent.</p>
     </div>
     <div class="why-item">
-      <div class="why-icon">📈</div>
+      <div class="why-mark">Clarity</div>
       <h3>Clear ROI, every month</h3>
       <p>Monthly reports show exactly how many calls, chats, and emails your agents handled — and what that saved you in staff time.</p>
     </div>
     <div class="why-item">
-      <div class="why-icon">🛡</div>
+      <div class="why-mark">Trust</div>
       <h3>No lock-in, no surprises</h3>
       <p>Month-to-month, transparent pricing. No hidden usage fees. Cancel or change your plan anytime with 30 days notice.</p>
     </div>
@@ -701,8 +655,8 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
-    <div class="section-label">Get a quote</div>
-    <h2 class="section-title">Let's find your setup</h2>
+    <div class="section-label"><span class="diamond"></span>Get a quote</div>
+    <h2 class="section-title">Let's find <em>your setup</em></h2>
     <p class="section-sub">Tell us a bit about your business and we'll send a custom quote within 24 hours — no sales pressure, no commitment.</p>
     <div class="contact-form" id="form-wrap">
       <div class="form-row">
@@ -746,7 +700,7 @@
       <p class="form-note">We respond within 24 hours. No spam, ever.</p>
     </div>
     <div class="success-msg" id="success-msg">
-      <h3>♟ You're on the board.</h3>
+      <h3>You're on the board.</h3>
       <p>We've received your request and will send a custom quote to your email within 24 hours.<br>In the meantime, feel free to reply to that email with any questions.</p>
     </div>
   </div>
@@ -754,7 +708,10 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">♟ Pawn<span>.</span></div>
+  <div class="footer-logo">
+    <img src="Pawn_Logo.png" alt="Pawn">
+    <span class="footer-logo-text">PAWN</span>
+  </div>
   <p>© 2026 Pawn AI. All rights reserved.</p>
   <p style="color:var(--muted);font-size:12px;">San Diego, CA · hello@pawnai.co</p>
 </footer>
@@ -767,13 +724,11 @@ function calcSavings() {
   document.getElementById('v-calls').textContent  = calls;
   document.getElementById('v-emails').textContent = emails;
   document.getElementById('v-wage').textContent   = '$' + wage;
-  // calls: avg 7 min each handled by human vs AI at $0.40
   const callHumanCost = calls * 12 * (7/60) * wage;
   const callAiCost    = calls * 12 * 0.40;
-  // emails: avg 5 min each vs AI at $0.30
   const emailHumanCost = emails * 12 * (5/60) * wage;
   const emailAiCost    = emails * 12 * 0.30;
-  const savings = (callHumanCost + emailHumanCost) - (callAiCost + emailAiCost) - 7188; // subtract Pawn annual cost
+  const savings = (callHumanCost + emailHumanCost) - (callAiCost + emailAiCost) - 7188;
   const hoursFreed = Math.round(((calls * 12 * 7/60) + (emails * 12 * 5/60)) * 0.85);
   const display = Math.max(0, Math.round(savings / 100) * 100);
   document.getElementById('savings-num').textContent = '$' + display.toLocaleString();
@@ -781,15 +736,31 @@ function calcSavings() {
 }
 
 function submitForm() {
-  const email = document.getElementById('f-email').value.trim();
   const name  = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+
   if (!name || !email) {
     const field = !name ? 'f-name' : 'f-email';
-    document.getElementById(field).style.borderColor = '#E24B4A';
+    document.getElementById(field).style.borderColor = '#B5544A';
     document.getElementById(field).focus();
     setTimeout(() => document.getElementById(field).style.borderColor = '', 2000);
     return;
   }
+
+  const payload = {
+    name:     name,
+    business: document.getElementById('f-biz').value.trim(),
+    email:    email,
+    phone:    document.getElementById('f-phone').value.trim(),
+    bundle:   document.getElementById('f-bundle').value,
+    message:  document.getElementById('f-msg').value.trim()
+  };
+
+  fetch('https://script.google.com/macros/s/AKfycby2Vf0RhwvLmwKa-QH8I4fKOGvoygbn7n6ny8VFNSlzOlFh2iVPHSMvoA3vso-tBoqn/exec', {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  });
+
   document.getElementById('form-wrap').style.display = 'none';
   document.getElementById('success-msg').style.display = 'block';
 }
