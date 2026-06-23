@@ -758,6 +758,7 @@ function submitForm() {
 
   fetch('https://script.google.com/macros/s/AKfycby2Vf0RhwvLmwKa-QH8I4fKOGvoygbn7n6ny8VFNSlzOlFh2iVPHSMvoA3vso-tBoqn/exec', {
     method: 'POST',
+    mode: 'no-cors',
     body: JSON.stringify(payload)
   });
 
